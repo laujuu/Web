@@ -28,10 +28,10 @@ def scrape_updates(html_content):
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    soup = BeautifulSoup(html_content, 'html.parser')
-    next_link = soup.find("a", class_="next")
+    sel = Selector(text=html_content)
+    next_link = sel.css("a.next").get()
     if next_link:
-        return next_link.get("href")
+        return sel.css("a.next::attr(href)").get()
     else:
         return None
 
