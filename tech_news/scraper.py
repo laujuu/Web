@@ -2,7 +2,6 @@ import requests
 import time
 
 from parsel import Selector
-from bs4 import BeautifulSoup
 
 
 # Requisito 1
