@@ -2,7 +2,6 @@ import requests
 import time
 
 from parsel import Selector
-from bs4 import BeautifulSoup
 
 
 # Requisito 1
@@ -44,7 +43,7 @@ def scrape_news(html_content):
         'title': select.css("h1.entry-title::text").get().strip(),
         'timestamp': select.css("li.meta-date::text").get(),
         'writer': select.css("span.author a::text").get(),
-        'reading_time': int(select.css("li.meta-reading-time::text").get()[:2]),
+        'reading_time': (select.css("li.meta-reading-time::text").get()[:2]),
         'summary': ''.join(
             select.css(
                 ".entry-content > p:first-of-type *::text").getall()).strip(),
