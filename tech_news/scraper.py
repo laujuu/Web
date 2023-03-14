@@ -2,6 +2,7 @@ import requests
 import time
 
 from parsel import Selector
+from bs4 import BeautifulSoup
 
 
 # Requisito 1
@@ -37,7 +38,19 @@ def scrape_next_page_link(html_content):
 
 # Requisito 4
 def scrape_news(html_content):
-    """Seu código deve vir aqui"""
+    select = Selector(text=html_content)
+    news = {
+        'url': select.css("link[rel='canonical']::attr(href)").get(),
+        'title': select.css("h1.entry-title::text").get().strip(),
+        'timestamp': select.css("li.meta-date::text").get(),
+        'writer': select.css("span.author a::text").get(),
+        'reading_time': int(select.css("li.meta-reading-time::text").get()[:2]),
+        'summary': ''.join(
+            select.css(
+                ".entry-content > p:first-of-type *::text").getall()).strip(),
+        'category': select.css(".label::text").get()
+    }
+    return news
 
 
 # Requisito 5
