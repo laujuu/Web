@@ -1,6 +1,11 @@
-# Requisito 7
+import re
+from tech_news.database import search_news
+
+
 def search_by_title(title):
-    """Seu código deve vir aqui"""
+    query = {"title": {"$regex": re.compile(title, re.IGNORECASE)}}
+    news_list = search_news(query)
+    return [(n["title"], n["url"]) for n in news_list]
 
 
 # Requisito 8

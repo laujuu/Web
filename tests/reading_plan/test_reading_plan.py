@@ -3,9 +3,10 @@ from tech_news.analyzer.reading_plan import ReadingPlanService
 
 
 def test_reading_plan_group_news():
-    with patch("tech_news.analyzer.reading_plan.find_news") as mock_find_news:
+    with patch("tech_news.database.find_news") as mock_find_news:
         mock_find_news.return_value = [
             {
+                "url": "https://blog.betrybe.com/novidades/noticia-bacana",
                 "title": "Notícia bacana",
                 "writer": "Eu",
                 "summary": "Algo muito bacana aconteceu",
@@ -14,6 +15,7 @@ def test_reading_plan_group_news():
                 "category": "Ferramentas",
             },
             {
+                "url": "https://blog.betrybe.com/novidades/noticia-legal",
                 "title": "Notícia bacana 2",
                 "writer": "Você",
                 "summary": "Algo muito bacana aconteceu de novo",
@@ -22,6 +24,7 @@ def test_reading_plan_group_news():
                 "category": "Novidades",
             },
             {
+                "url": "https://blog.betrybe.com/novidades/noticia-bacana",
                 "title": "Notícia demorada",
                 "writer": "Eu",
                 "summary": "Um negócio rolou aí",
