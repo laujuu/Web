@@ -17,7 +17,7 @@
 
 
 
-## Histórico de commits `Commits`
+## Histórico de `Commits`
   * Para ver a evolução do codigo você pode checar o histórico de commits  
   ![Screenshot_9](https://user-images.githubusercontent.com/37710776/229648831-1d560b18-a34f-42bf-91b3-20a44ff2125f.png)
   
